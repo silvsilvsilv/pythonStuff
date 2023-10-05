@@ -1,25 +1,7 @@
 from prettytable import PrettyTable
-from numberConversion import strToList as strToList, charToNumber as charToNumber
+from numberConversion import strToList as strToList, charToNumber as charToNumber, numberToChar as numberToChar
 from toBinary import toBinaryProcess as toBinaryProcess, toBinary as toBinary
 
-def numberToChar(x:int):
-    
-    if isinstance(x,int):
-        match x:
-            case 10:
-                return 'a'
-            case 11:
-                return 'b'
-            case 12:
-                return 'c'
-            case 13:
-                return 'd'
-            case 14:
-                return 'e'
-            case 15:
-                return 'f'
-
-    return x
 
 def toHex(num:str):
     
