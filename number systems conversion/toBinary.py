@@ -17,19 +17,6 @@ def toBinary(num:str):
             n = int(num)
             return(bin(n))
 
-
-    match num[1]:
-        case 'o':
-            n = int(num,8)
-            return(bin(n))
-        case 'x':
-            n = int(num,16)
-            return(bin(n))
-        case 'b':
-            return(num)
-        case _:
-            n = int(num)
-            return(bin(n))
 def toBinaryProcess(num:str):
     
     n = strToList(num)

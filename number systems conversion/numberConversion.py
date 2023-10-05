@@ -43,3 +43,17 @@ def charToNumber(x:str):
                 return 15
     
     return x
+
+def numberConversion(x:str, choice:int):
+    
+    match choice:
+        case 1:
+            x = x
+        case 2:
+            x = "0b" + x
+        case 3:
+            x = "0o" + x
+        case 4:
+            x = "0x" + x
+        case _:
+            print("Invalid!")
