@@ -43,38 +43,57 @@ def printNodes(node, val=''):
 	if(not node.left and not node.right):
 		print(f"{node.symbol} -> {newVal} -> {node.freq} == {len(newVal)*int(node.freq)}")
 
+def huffmanTree():
+	# characters for huffman tree
+	chars = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'l', 'm', 'n', 'o', 'p', 'r', 's',  't', 'u']
 
-# characters for huffman tree
-chars = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'l', 'm', 'n', 'o', 'p', 'r', 's',  't', 'u']
+	# frequency of characters
+	#a b c d e f g h i l m n o p r s t u
+	freq = [3, 1, 9, 1, 10, 2, 1, 1, 1, 4, 2, 1 ,5,5,1,3,5,2,1]
 
-# frequency of characters
-#a b c d e f g h i l m n o p r s t u
-freq = [3, 1, 9, 1, 10, 2, 1, 1, 1, 4, 2, 1 ,5,5,1,3,5,2,1]
+	# list containing unused nodes
+	nodes = []
 
-# list containing unused nodes
-nodes = []
+	# converting characters and frequencies
+	# into huffman tree nodes
+	for x in range(len(chars)):
+		heapq.heappush(nodes, node(freq[x], chars[x]))
 
-# converting characters and frequencies
-# into huffman tree nodes
-for x in range(len(chars)):
-	heapq.heappush(nodes, node(freq[x], chars[x]))
+	while len(nodes) > 1:
 
-while len(nodes) > 1:
+		# sort all the nodes in ascending order
+		# based on their frequency
+		left = heapq.heappop(nodes)
+		right = heapq.heappop(nodes)
 
-	# sort all the nodes in ascending order
-	# based on their frequency
-	left = heapq.heappop(nodes)
-	right = heapq.heappop(nodes)
+		# assign directional value to these nodes
+		left.huff = 0
+		right.huff = 1
 
-	# assign directional value to these nodes
-	left.huff = 0
-	right.huff = 1
+		# combine the 2 smallest nodes to create
+		# new node as their parent
+		newNode = node(left.freq+right.freq, left.symbol+right.symbol, left, right)
 
-	# combine the 2 smallest nodes to create
-	# new node as their parent
-	newNode = node(left.freq+right.freq, left.symbol+right.symbol, left, right)
+		heapq.heappush(nodes, newNode)
 
-	heapq.heappush(nodes, newNode)
+	# Huffman Tree is ready!
+	printNodes(nodes[0])
 
-# Huffman Tree is ready!
-printNodes(nodes[0])
+huffmanTree()
+
+#TODO: add user input, use dict
+
+
+def toUserInput():
+	
+	y = []
+	x = str(input("What word? "))
+
+	for i in range(len(x)):
+		if x[i] != " ":
+			y.append(x[i])
+	
+	y.sort()
+	print(y)
+
+toUserInput()

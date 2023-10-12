@@ -24,11 +24,11 @@ def egyptianFractions(n:int, d:int):
     # #     frac -= y
     # #     list.append(f"{y}")
     
-    #// stolen form geeksforgeeks
+    #// stolen from geeksforgeeks
     while n != 0:
         x = ceil(d/n)
         list.append(x)
-
+        
         n = x * n - d
         d = d * x
         
