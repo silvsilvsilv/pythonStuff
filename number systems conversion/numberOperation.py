@@ -39,10 +39,21 @@ if __name__ == "__main__":
 
     # * Hex
     print("\nHex")
-    # TODO: do hexadecimal operation
-    e = "123af"
-    f = "f"
+    
+    e = "0x123af"
+    f = "0xf"
 
+    #addition
+    print(hex(int(e,16) + int(f,16)))
+
+    #subtraction
+    print(hex(int(e,16) - int(f,16)))
+
+    #multiplication
+    print(hex(int(e,16) * int(f,16)))
+
+    #division
+    print(hex(int(e,16) // int(f,16)))
 
 
     

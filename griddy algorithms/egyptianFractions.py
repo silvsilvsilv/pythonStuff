@@ -1,7 +1,6 @@
 #Egyptian Fractions
 
 from math import ceil, floor, fsum
-from fractions import Fraction
 
 def egyptianFractions(n:int, d:int):
 

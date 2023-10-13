@@ -1,20 +1,28 @@
-from fractions import Fraction
-from math import fsum, floor, ceil
+charFrequency = 1
+y = ['a', 'a', 'a', 'b', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'd', 'e', 'e', 'e', 'e', 'e']
+charFreqDict = {}
 
-x = Fraction(5,6)
-#6/5 = 1.111 = 2
-x -= Fraction(1,2)
-# 5/6 - 1/2 = 1/3 
-# a - b = c
-# c -= a
-# x -= Fraction(1,3)
+# for i in range(1,len(y),1):
+# 	print(y[i])
+print(y[-1])
+for i in range(1,len(y),1):
+		
+		# sets char as key and charFrequency as value if not in dict
+		charFreqDict.setdefault(y[i],charFrequency)
 
-list = [2,3]
+		if y[i] == y[i-1]:
+			charFrequency += 1
+			charFreqDict[y[i]] = charFrequency 
+		elif y[i] != y[i-1]:
+			charFrequency = 1
+			charFreqDict[y[i]] = charFrequency 
 
-i = 0
-total = 0
-while i < len(list):
-    total += (1/list[i])
-    i += 1
 
-print(round(total,5) == round((5/6), 5))
+for x in range(1,len(y),1):
+	if x == 1:
+		print(charFreqDict.get(y[x]),y[x])
+		
+	if y[x] != y[x-1]:
+		print(charFreqDict.get(y[x]), y[x])
+		
+# print(charFreqDict)
