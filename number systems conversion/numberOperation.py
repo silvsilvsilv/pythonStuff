@@ -1,6 +1,6 @@
 from numberConversion import charToNumber as charToNumber
 
-
+#TODO: add user input
 if __name__ == "__main__":
     
     # * binary
@@ -17,8 +17,8 @@ if __name__ == "__main__":
     print(bin(int(a,2) * int(b,2)))
 
     # division
-    # ! This does not account for after the decimal value (i.e. 1101 / 100 is actually 11.01 but only outputs 11)
-    print(bin(int(a,2) // int(b,2)))
+    # * now added remainder
+    print(f"{bin(int(a,2) // int(b,2))} {'r: ' + (bin(int(a,2) % int(b,2))[2:]) if int(a,2) % int(b,2) != 0 else ' '}")
 
     # * octal
     c = "123"
@@ -34,8 +34,8 @@ if __name__ == "__main__":
     print(oct(int(c,8) * int(d,8)))
 
     #division
-    # ! Does not account for the numbers after the decimal point
-    print(oct(int(c,8) // int(d,8)))
+    # * now added remainder
+    print(f"{oct(int(c,8) // int(d,8))} {'r: '+(oct(int(c,8) % int(d,8))[2:]) if int(c,8) % int(d,8) != 0 else ' '}")
 
     # * Hex
     print("\nHex")
@@ -53,7 +53,9 @@ if __name__ == "__main__":
     print(hex(int(e,16) * int(f,16)))
 
     #division
-    print(hex(int(e,16) // int(f,16)))
+    # * now added remainder
+
+    print(f"{hex(int(e,16) // int(f,16))} {'r: '+ (hex(int(e,16) % int(f,16))[2:]) if int(e,16) % int(f,16) != 0 else ' ' }")
 
 
     
