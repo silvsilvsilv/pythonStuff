@@ -1,5 +1,3 @@
-x = y = z = "orange"
+n = "255"
 
-print(x)
-print(y)
-print(z)
+print(format(n,'o'))
