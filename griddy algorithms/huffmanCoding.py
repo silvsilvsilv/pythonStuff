@@ -1,7 +1,6 @@
 # A Huffman Tree Node
 import heapq
 
-
 class node:
 	def __init__(self, freq, symbol, left=None, right=None):
 		# frequency of symbol
@@ -120,18 +119,4 @@ def huffmanTree():
 	printNodes(nodes[0])
 
 huffmanTree()
-
-
-
-def toUserInput():
-	
-	y = []
-	x = str(input("What word? "))
-
-	for i in range(len(x)):
-		if x[i] != " ":
-			y.append(x[i])
-	
-	y.sort()
-	print(y)
 

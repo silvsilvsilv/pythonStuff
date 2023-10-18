@@ -1,29 +1,11 @@
 #Egyptian Fractions
 
-from math import ceil, floor, fsum
+from math import ceil
 
 def egyptianFractions(n:int, d:int):
 
     list = []
-    # frac = Fraction(n,d) #5/6
 
-    # ! Deprecated, will try new methods (i.e. doesn't fucking work)
-    # y = 0
-    # x = Fraction(1,ceil(d/n)) #1/2
-    # frac -= x #5/6 - 1/2
-    # print(x) # 1/2
-    # list.append(x)
-    # print(f"Frac is {frac}")
-
-    # # while frac != 0:
-
-    # #     # 5/6 - 1/2 - 1/3 = 0
-        
-    # #     y = Fraction(n,d) - frac 
-    # #     frac -= y
-    # #     list.append(f"{y}")
-    
-    #// stolen from geeksforgeeks
     while n != 0:
         x = ceil(d/n)
         list.append(x)

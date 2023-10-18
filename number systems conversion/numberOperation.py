@@ -32,11 +32,8 @@ def division(num1:str, num2:str, opType:str):
     try:
         match opType:
             case "Binary": print(f"{bin(int(num1,2) // int(num2,2))[2:]} {'r: ' + str(int(num1,2) % int(num2,2)) if int(num1,2) % int(num2,2) != 0 else ''}")
-
             case "Octal": print(f"{oct(int(num1,8) // int(num2,8))[2:]} {'r: ' + str(int(num1,8) % int(num2,8)) if int(num1,8) % int(num2,8) != 0 else ''}")
-
             case "Hex": print(f"{hex(int(num1,16) // int(num2,16))[2:]} {'r: ' + str(int(num1,16) % int(num2,16)) if int(num1,16) % int(num2,16) != 0 else ''}")
-
             case "Decimal": print(f"{int(num1) // int(num2)} {'r: ' + str(int(num1) % int(num2)) if int(num1) % int(num2) != 0 else ''}")
     except:
         print(f"Not a {opType} number!\n"); numberOperation()
@@ -58,16 +55,22 @@ def numberOperation():
         case 4: opType = "Decimal"
         case _: print("Invalid!\n\n"); numberOperation()
 
-    num1 = str(input(f"Enter a {opType} number: "))
-    op = str(input("What operation? "))
-    num2 = str(input(f"Enter a {opType} number: "))
+    # num1 = str(input(f"Enter a {opType} number: "))
+    # op = str(input("What operation? "))
+    # num2 = str(input(f"Enter a {opType} number: "))
+    x = str(input(""))
+    x = x.split()
+
+    num1 = x[0]
+    num2 = x[2]
+    op = x[1]
 
     match op:
         case '+': addition(num1,num2, opType)
         case '-': subtraction(num1,num2, opType)
         case '*': multiplication(num1,num2,opType)
         case '/': division(num1,num2,opType)
-        case _: print("Invalid! "); numberOperation()
+        case _: print("Invalid!\n\n"); numberOperation()
 
 
 def a():
