@@ -1,6 +1,22 @@
+def isPrime(num:int):
+    if num > 1:
+    # Iterate from 2 to n / 2
+        for i in range(2, int(num/2)+1):
+            # If num is divisible by any number between
+            # 2 and n / 2, it is not prime
+            if (num % i) == 0:
+                return False
+            else:
+                return True
+    else:
+        return False
+
 def diffieHelmanEncrypt():
-    #TODO: add prime number validator chuchu
     p = int(input("Input prime number: "))
+    if not(isPrime(p)):
+        print(f"{p} is not a prime number!")
+        diffieHelmanEncrypt()
+
     gen = int(input("Input generator: "))
 
     pr1 = int(input("What is private key 1: "))

@@ -42,7 +42,7 @@ def caesarCipher(text:str, shift:int, toEncrypt:bool):
     print(f"{cipher}\n{asciiCode}")
 
 
-caesarCipher("OLF THSJVST! DHUUH OHUN VBA HMALY ZJOVVS AVKHF?",7 , False)
+caesarCipher("OLF THSJVST! DHUUH OHUN VBA HMALY ZJOVVS AVKHF?",7,False)
 caesarCipher("NEGROS ORIENTAL STATE UNIVERSITY",20,True)
 # caesarCipher("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z", 7, False)
 

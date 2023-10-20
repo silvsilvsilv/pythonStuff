@@ -17,7 +17,7 @@ def egyptianFractions(n:int, d:int):
         print(f"1/{list[i]} {'+' if i != len(list) - 1 else ''}", end=" ")
         
 
-if __name__ == "__main__":
+def main():
     
     n = d = 0
 
@@ -35,3 +35,4 @@ if __name__ == "__main__":
     else:
         print("0")
 
+main()
