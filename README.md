@@ -5,3 +5,4 @@ Libraries used:
 binarytree
 prettytable
 pyvis
+matplotlib
