@@ -1,4 +1,12 @@
 # Insertion sort
+from colorama import Fore,Style
+def highlight(array,n):
+    for i in range(len(array)):
+        if array[i] == n:
+            print(f"{Fore.RED}{array[i]}{Style.RESET_ALL} ",end="")
+        else:
+            print(f"{array[i]} ",end="")
+
 def insertionSort(array):
 
     for step in range(1, len(array)):
@@ -13,19 +21,20 @@ def insertionSort(array):
             array[j + 1] = array[j]
             j = j - 1
             print("Key is ", key)
-            print(array)
+            highlight(array,key)
             print("\n===Swap===")
+            
         
         # Place key at after the element just smaller than it.
         array[j + 1] = key
 
         if not(array[j] > key):
             print("Key is ", key)
-            print(array)
+            highlight(array,key)
             print("\n===No Swap===")
     
 if __name__ == "__main__":
-    arr = [2,3,5,4,0,9,1]
+    arr = [14,7,55,40,20,8,10]
     print("Unsorted array: ",arr)
     insertionSort(arr)
     print("Sorted: ", arr)

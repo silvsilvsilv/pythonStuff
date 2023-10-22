@@ -196,12 +196,7 @@ def huffmanTree():
 	tree = nodes[0]
 
 	draw_tree(tree)
-	
-	testValues = []
-	for i in range(len(test)):
-		testValues.append(test[i].symbol)
 
-	print(valList)
 
 huffmanTree()
 
