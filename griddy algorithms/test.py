@@ -1,120 +1,38 @@
-from collections import Counter, namedtuple
-from heapq import heapify, heappop, heappush
-import heapq
 import networkx as nx
-from EoN import hierarchy_pos
-from pyvis.network import Network
 import matplotlib.pyplot as plt
 
-class Node:
-    def __init__(self, count, letter,left=None,right=None):
-        self.count = count
-        self.letter = letter
-        self.left = left
-        self.right = right
+#A B C D E F G 
+nodes = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U']
+edges = [('A','B',270),('A','C',250),('A','D',2000),('B','I',1800),('C','B',0),('D','C',750),('D','E',2700),('E','F',1200),('C','H',290),('C','I',2000),('I','J',2000),('H','I',2500),('H','J',2500),('F','G',7000),('F',
+'L',500),('L','G',350),('L','K',10000),('L','M',1500),('K','H',500),('G','H',1300),('K','M',900),('M','N',0),('N','J',2000),('K','J',2200),('J','O',270),('L','Q',400),('Q','R',700),('R','U',550),('R','S',400),('S','U',500),('U','T',270),('S','T',480),('O','T',3200),('Q','P',1000),('Q','M',550),('M','P',450),('P','S',180)]
+#[('A', 'D'), ('B', 'D'), ('C', 'E'), ('D', 'F'), ('D', 'G'), ('E', 'G'), ('F', 'G')]
+G = nx.DiGraph()
 
-    def __lt__(self, nxt):
-            return self.count < nxt.count
+G.add_nodes_from(nodes_for_adding=nodes)
 
+edgeLabels = {}
+for (u,v,w) in edges:
+    G.add_edge(u,v,weight=w)
+    edgeLabels.setdefault((u,v),w)
 
-text = "bachelorofscienceincomputersciencecollegeofartsandsciences"
-c = Counter(text)
-print(c)
+shortest_path = nx.shortest_path(G,source='A',target='U')
 
-# Node = namedtuple('Node', ['count', 'letter', 'left', 'right'])
+totalEdgeWeight = 0
 
-# left = Node(4, 'a', None, None)
-# print(left)
-# right = Node(2,'n',None,None)
-#print(right)
+for i in range(len(shortest_path)-1):
+    (u,v) = (shortest_path[i],shortest_path[i+1])
+    for (a,b,w) in edges:
+        if (u,v) == (a,b):
+            totalEdgeWeight += w
 
-# count = left.count + right.count
-root = Node(None, '\0', None, None)
-#print(root)
+print(totalEdgeWeight)
+pos = nx.layout.planar_layout(G)
 
-nodes = [Node(count, letter, None, None) 
-         for (letter, count) in c.items()]
+nx.draw(G,pos,with_labels=True,node_size=10)
 
-# heap = nodes.copy()
-# heapify(heap)
+nx.draw_networkx(G, pos)
 
-def make_tree(heap):
-    while len(heap) > 1:
-        # Combine the two nodes with the lowest frequencies
-        left = heapq.heappop(heap)
-        right = heapq.heappop(heap)
-        
-        # Create a new node with the combined frequency
-        combined_count = left.count + right.count
-        new_node = Node(combined_count, '\0',left,right)
-        
-        # Set the left and right children
-        new_node.left = left
-        new_node.right = right
-        
-        # Add the new node back to the heap
-        heapq.heappush(heap, new_node)
-    
-    # The last remaining node in the heap is the root of the Huffman tree
-    return heap[0]
+nx.draw_networkx_edges(G, pos, edgelist=[(shortest_path[i], shortest_path[i+1]) for i in range(len(shortest_path)-1)], edge_color='r', width=2)
+nx.draw_networkx_edge_labels(G, pos,edge_labels=edgeLabels)
 
-tree = make_tree(nodes)
-
-def add_edges(parent, G):
-    """Make a NetworkX graph that represents the tree."""
-    if parent is None:
-        return
-    
-    for child in (parent.left, parent.right):
-        if child:
-            G.add_edge(parent, child)
-            add_edges(child, G)
-
-# G = nx.DiGraph()
-# add_edges(tree, G)
-
-def get_labels(parent, labels):
-    if parent is None:
-        return
-    
-    if parent.letter == '\0':
-        labels[parent] = parent.count
-    else:
-        labels[parent] = parent.letter
-        
-    get_labels(parent.left, labels)
-    get_labels(parent.right, labels)
-
-# labels = {}
-# get_labels(tree, labels)
-
-def get_edge_labels(parent, edge_labels):
-    if parent is None:
-        return
-    
-    if parent.left:
-        edge_labels[parent, parent.left] = '0'
-        get_edge_labels(parent.left, edge_labels)
-        
-    if parent.right:
-        edge_labels[parent, parent.right] = '1'
-        get_edge_labels(parent.right, edge_labels)
-
-# edge_labels = {}
-# get_edge_labels(tree, edge_labels)
-# print(len(edge_labels))
-
-def draw_tree(tree):
-    G = nx.DiGraph()
-    add_edges(tree, G)
-    pos = hierarchy_pos(G)
-    labels = {}
-    get_labels(tree, labels)
-    edge_labels = {}
-    get_edge_labels(tree, edge_labels)
-    subax1 = plt.subplot()
-    nx.draw(G, pos, labels=labels, alpha=0.4)
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='C1')
-    plt.show()
-
-draw_tree(tree)
+plt.show()
