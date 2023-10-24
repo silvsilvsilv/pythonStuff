@@ -1,3 +1,4 @@
+#Hexadecimal Conversion
 from prettytable import PrettyTable
 from numberConversion import strToList as strToList, charToNumber as charToNumber, numberToChar as numberToChar
 from toBinary import toBinaryProcess as toBinaryProcess, toBinary as toBinary

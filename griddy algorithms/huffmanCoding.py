@@ -1,4 +1,4 @@
-# A Huffman Tree Node
+#Huffman Coding
 import heapq
 import networkx as nx
 from EoN import hierarchy_pos
@@ -26,7 +26,6 @@ class node:
 
 	def __lt__(self, nxt):
 		return self.freq < nxt.freq
-
 
 # utility function to print huffman
 # codes for all symbols in the newly
@@ -121,7 +120,6 @@ def huffmanTree():
 			y.append(x[i])
 	
 	y.sort()
-	# //print(y)
 	
 	charFrequency = 1
 	# adds the characters and its frequency into the charFreq dict
@@ -139,9 +137,6 @@ def huffmanTree():
 		elif y[i] != y[i-1]:
 			charFrequency = 1
 			charFreqDict[y[i]] = charFrequency 
-		
-
-	# //print(charFreqDict)
 
 	test = []
 	# converting characters and frequencies
@@ -156,7 +151,6 @@ def huffmanTree():
 			heapq.heappush(nodes, node(charFreqDict.get(y[x]), y[x]))
 			heapq.heappush(test, node(charFreqDict.get(y[x]), y[x]))
 
-	
 	while len(nodes) > 1:
 
 		# sort all the nodes in ascending order
@@ -196,7 +190,6 @@ def huffmanTree():
 	tree = nodes[0]
 
 	draw_tree(tree)
-
 
 huffmanTree()
 

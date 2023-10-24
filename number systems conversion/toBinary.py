@@ -1,6 +1,7 @@
+#Binary Conversion
 from prettytable import PrettyTable
 from numberConversion import strToList as strToList, charToNumber as charToNumber
-# * split into separate files for own sanity
+# * split into separate files for convenience
 
 def toBinary(num:str):
 

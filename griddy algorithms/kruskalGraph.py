@@ -1,3 +1,4 @@
+#Kruskal's Graph
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -8,7 +9,7 @@ G = nx.Graph()
 G.add_nodes_from(nodes)
 G.add_weighted_edges_from(edges)
 
-mst = nx.minimum_spanning_tree(G)
+mst = nx.minimum_spanning_tree(G,algorithm="kruskal")
 
 totalEdgeWeight = 0
 

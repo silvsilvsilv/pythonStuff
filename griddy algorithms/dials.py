@@ -1,3 +1,4 @@
+#Dial's Algorithm with Graph
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -25,7 +26,7 @@ for i in range(len(shortest_path)-1):
         if (u,v) == (a,b):
             totalEdgeWeight += w
 
-print(totalEdgeWeight)
+print(f"Total edge weight is: {totalEdgeWeight}")
 pos = nx.layout.planar_layout(G)
 
 nx.draw(G,pos,with_labels=True,node_size=10)

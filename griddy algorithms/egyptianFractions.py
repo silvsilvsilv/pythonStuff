@@ -1,5 +1,4 @@
 #Egyptian Fractions
-
 from math import ceil
 
 def egyptianFractions(n:int, d:int):
