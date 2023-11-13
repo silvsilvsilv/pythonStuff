@@ -33,8 +33,8 @@ def division(num1:str, num2:str, opType:str):
     try:
         match opType:
             case "Binary": print(f"{bin(int(num1,2) // int(num2,2))[2:]} {'r: ' + str(int(num1,2) % int(num2,2)) if int(num1,2) % int(num2,2) != 0 else ''}")
-            case "Octal": print(f"{oct(int(num1,8) // int(num2,8))[2:]} {'r: ' + str(int(num1,8) % int(num2,8)) if int(num1,8) % int(num2,8) != 0 else ''}")
-            case "Hex": print(f"{hex(int(num1,16) // int(num2,16))[2:]} {'r: ' + str(int(num1,16) % int(num2,16)) if int(num1,16) % int(num2,16) != 0 else ''}")
+            case "Octal": print(f"{oct(int(num1,8) // int(num2,8))[2:]} {'r: ' + str(oct(int(num1,8) % int(num2,8)))[2:] if int(num1,8) % int(num2,8) != 0 else ''}")
+            case "Hex": print(f"{hex(int(num1,16) // int(num2,16))[2:]} {'r: ' + str(hex(int(num1,16) % int(num2,16)))[2:] if int(num1,16) % int(num2,16) != 0 else ''}")
             case "Decimal": print(f"{int(num1) // int(num2)} {'r: ' + str(int(num1) % int(num2)) if int(num1) % int(num2) != 0 else ''}")
     except:
         print(f"Not a {opType} number!\n"); numberOperation()
