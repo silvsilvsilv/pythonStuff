@@ -3,21 +3,26 @@ from prettytable import PrettyTable
 from numberConversion import strToList as strToList, charToNumber as charToNumber
 # * split into separate files for convenience
 
-def toBinary(num:str):
+import decimal
 
+decimal.getcontext().prec = 50
+
+def toBinary(num):
+    
     match num[1]:
         case 'o':
             n = int(num,8)
-            return(bin(n))
+            # return(bin(n))
         case 'x':
             n = int(num,16)
-            return(bin(n))
+            # return(bin(n))
         case 'b':
-            return(num)
+            n = num
+            # return(num)
         case _:
             n = int(num)
-            return(bin(n))
-
+            # return(bin(n))
+    
 def toBinaryProcess(num:str):
     
     n = strToList(num)
@@ -120,12 +125,12 @@ def toBinaryProcess(num:str):
 if __name__ == "__main__":
 
     print(f"Decimal to Binary\n")
-    toBinaryProcess("123") # 1 111 011
+    toBinaryProcess("123.5") # 1 111 011
     
 
     print(f"Octal to Binary\n")
-    toBinaryProcess("0o123")# 1 010 011
+    toBinaryProcess("0o123.5")# 1 010 011
     
 
     print(f"Hex to Binary\n")
-    toBinaryProcess("0x123")# 0001 0010 0011
+    toBinaryProcess("0x123.5")# 0001 0010 0011

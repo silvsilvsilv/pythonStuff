@@ -1,3 +1,4 @@
+import NUMBER
 #Number Operation
 def addition(num1:str,num2:str, opType:str):
     try:
@@ -46,32 +47,51 @@ def numberOperation():
 
     num1 = num2 = op = ""
     print("===Number operation===\n\nPlease separate numbers with a space")
-    print("[1] Binary Operation\n[2] Octal Operation\n[3] Hexadecimal Operation\n[4] Decimal Operation")
+    print("[1] Binary Operation\n[2] Octal Operation\n[3] Hexadecimal Operation\n")
     choice = int(input("What choice? "))
 
     match choice:
         case 1: opType = "Binary"
         case 2: opType = "Octal"
         case 3: opType = "Hex"
-        case 4: opType = "Decimal"
+        # case 4: opType = "Decimal"
         case _: print("Invalid!\n\n"); numberOperation()
 
     # num1 = str(input(f"Enter a {opType} number: "))
     # op = str(input("What operation? "))
     # num2 = str(input(f"Enter a {opType} number: "))
-    x = str(input(""))
-    x = x.split()
+    print("Input operation: ")
+    op = str(input(""))
+    
+    match opType:
+        case "Binary": 
+            if(op == '+'):
+                NUMBER.AddBinary()
+            elif(op=='-'):
+                NUMBER.SubBin()
+            elif(op=='*'):
+                NUMBER.MultBin()
+            elif(op=='/'):
+                NUMBER.DivBin()
+        case "Octal":
+            if(op == '+'):
+                NUMBER.AddOctal()
+            elif(op=='-'):
+                NUMBER.SubOctal()
+            elif(op=='*'):
+                NUMBER.MultOctal()
+            elif(op=='/'):
+                NUMBER.DivOctal()
+        case "Hex":
+            if(op == '+'):
+                NUMBER.AddHexa()
+            elif(op=='-'):
+                NUMBER.SubHexa()
+            elif(op=='*'):
+                NUMBER.MultHexa()
+            elif(op=='/'):
+                NUMBER.DivHexa()
 
-    num1 = x[0]
-    num2 = x[2]
-    op = x[1]
-
-    match op:
-        case '+': addition(num1,num2, opType)
-        case '-': subtraction(num1,num2, opType)
-        case '*': multiplication(num1,num2,opType)
-        case '/': division(num1,num2,opType)
-        case _: print("Invalid!\n\n"); numberOperation()
 
 
 def a():
@@ -134,4 +154,4 @@ try:
     while True:
         numberOperation()
 except:
-    print("Quitting program")
+    print("\nQuitting program")
