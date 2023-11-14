@@ -1,11 +1,12 @@
 #Activity Selection
-def printMaxActivities(s, f):
+def printMaxActivities(node, s, f):
+
 	n = len(f)
 	print("The following activities are selected\nActivities: ",end="")
 
 	# The first activity is always selected
 	i = 0
-	print(i,end=" ")
+	print(nodes[i],end=" ")
 
 	# Consider rest of the activities
 	for j in range(n):
@@ -14,12 +15,36 @@ def printMaxActivities(s, f):
 		# or equal to the finish time of previously
 		# selected activity, then select it
 		if s[j] >= f[i]:
-			print(j,end=" ")
+			print(nodes[j],end=" ")
 			i = j
 
-# Driver program to test above function
-start = [1, 3, 0, 5, 8, 5]
-finish = [2, 4, 6, 7, 9, 9]
-printMaxActivities(start, finish)
+if __name__ == "__main__":
 
-# This code is contributed by Nikhil Kumar Singh
+	# Driver program to test above function
+	# nodes = ['a','b','c','d','e','f']
+	# start = [1, 3, 0, 5, 8, 5]
+	# finish = [2, 4, 6, 7, 9, 9]
+
+
+	# printMaxActivities(nodes,start, finish)
+
+	nodes = []
+	start = []
+	finish = []
+
+	n = str(input("Input node names: "))
+	x = str(input("Start: "))
+	y = str(input("Finish: "))
+
+	x = x.split(',')
+	y = y.split(',')
+	n = n.split(',')
+
+	start = [int(i) for i in x]
+	finish = [int(i) for i in y]
+	nodes = [i for i in n]
+	
+
+	printMaxActivities(nodes, start,finish)
+
+	
