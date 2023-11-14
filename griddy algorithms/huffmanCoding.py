@@ -47,12 +47,12 @@ def printNodes(node:node, val=''):
 		# if node is edge node then
 		# display its huffman code
 	if(not node.left and not node.right):
-		print(f"{node.symbol} -> {node.freq} -> {newVal}({len(newVal)}) = {len(newVal)*int(node.freq)}")
+		print(f"    {node.symbol}     ->     {node.freq}     -> {newVal}({len(newVal)}) = {len(newVal)*int(node.freq)}")
 		totalCodeFreq += (len(newVal) * int(node.freq))
 		valList.append((node.symbol,newVal))
 
 def add_edges(parent, G):
-    """Make a NetworkX graph that represents the tree."""
+
     if parent is None:
         return
     
@@ -68,7 +68,7 @@ def get_labels(parent, labels):
     if parent.symbol == '\0':
         labels[parent] = parent.freq
     else:
-        labels[parent] = parent.symbol
+        labels[parent] = str(parent.symbol)+" ("+str(parent.freq)+")"
         
     get_labels(parent.left, labels)
     get_labels(parent.right, labels)
@@ -93,7 +93,7 @@ def draw_tree(tree):
     get_labels(tree, labels)
     edge_labels = {}
     get_edge_labels(tree, edge_labels)
-    subax1 = plt.subplot()
+    # subax1 = plt.subplot()
     nx.draw(G, pos, labels=labels, alpha=0.4)
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='C1')
     plt.show()
@@ -170,10 +170,11 @@ def huffmanTree():
 		heapq.heappush(test,newNode)
 	
 	test.reverse()
-	for i in range(len(test)):
-		print(f"{test[i].symbol} = {test[i].huff}", end=",")
+	# for i in range(len(test)):
+	# 	print(f"{test[i].symbol} = {test[i].huff}", end=",")
 
 	print("\nHuffman Tree\n")
+	print("Character -> Frequency -> Code  = Code Frequency")
 	# Huffman Tree is ready!
 
 	printNodes(nodes[0])
