@@ -62,9 +62,22 @@ def fractionalKnapsack(W, arr):
  
 # Driver Code
 if __name__ == "__main__":
-    W = 18
-    arr = [Item(10,10), Item(20,5), Item(15,3), Item(35,1), Item(5,2), Item(10,4), Item(25,6), Item(15,3)]
- 
+    # W = 18
+    # arr = [Item(10,10), Item(20,5), Item(15,3), Item(35,1), Item(5,2), Item(10,4), Item(25,6), Item(15,3)]
+    
+    W = int(input("What is the maximum weight? "))
+
+    arr = []
+    userInput = str(input("What are the item's profit and weight, list in that order and separate by comma, separate items by space: "))
+
+    container = userInput.split(' ')
+
+    for i in range(len(container)):
+        split = container[i].split(',')
+        arr.append(Item(int(split[0]),int(split[1])))
+      
+    print(container)
+
     # Function call
     fractionalKnapsack(W, arr)
  
